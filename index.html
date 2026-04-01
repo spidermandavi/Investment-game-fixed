@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Game</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Stock Market Game</h1>
+
+    <!-- SETUP SCREEN -->
+    <div id="setup">
+      <label>Number of Players: 
+        <select id="playerCount">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+        </select>
+      </label>
+      <div id="playerNamesContainer"></div>
+
+      <label>Game Mode:
+        <select id="gameMode">
+          <option value="turns">Turns</option>
+          <option value="money">Money Goal</option>
+        </select>
+      </label>
+      <label>Mode Value: <input id="modeValue" type="number" value="20" /></label>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div id="game" class="hidden">
+      <div id="infoBar"></div>
+      <div id="buySellToggle"></div>
+
+      <table id="stockTable">
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Owned</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="buttons">
+        <button onclick="safeEndTurn()">End Turn</button>
+        <button class="danger" onclick="confirmEndGame()">End Game</button>
+      </div>
+    </div>
+
+    <!-- PODIUM SCREEN -->
+    <div id="podium" class="hidden">
+      <div id="celebrationContainer">
+        <div class="podiumBlock gold" id="firstPlace"></div>
+        <div class="podiumBlock silver" id="secondPlace"></div>
+        <div class="podiumBlock bronze" id="thirdPlace"></div>
+      </div>
+      <button onclick="resetPodium()">Restart</button>
+    </div>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup" class="hidden">
+    <div id="popupContent">
+      <div id="popupMessage"></div>
+      <canvas id="graphCanvas"></canvas>
+      <button id="popupOk">OK</button>
+    </div>
+  </div>
+
+  <script src="js/gameLogic.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
